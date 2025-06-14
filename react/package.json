@@ -1,0 +1,59 @@
+{
+  "name": "@webstudio/react",
+  "main": "client/dist/webstudio.cjs.js",
+  "module": "client/dist/webstudio.es.js",
+  "types": "client/dist/index.d.ts",
+  "private": false,
+  "version": "0.0.1",
+  "type": "commonjs",
+  "description": "WebStudio React Client",
+  "files": [
+    "dist"
+  ],
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "bin": {
+    "webstudio": "bin/start.js"
+  },
+  "scripts": {
+    "dev": "concurrently \"pnpm run dev:server\" \"pnpm run dev:client\"",
+    "dev:client": "pnpm --prefix client vite",
+    "dev:server": "nodemon --watch 'server/**/*.ts' --exec 'ts-node' server/main.ts",
+    "build:client": "cd client && tsc --project tsconfig.build.json && vite build",
+    "build:server": "cd server && tsc -p tsconfig.server.json",
+    "build": "pnpm run build:client && pnpm run build:server",
+    "start:server": "node dist/server/main.js",
+    "preview": "pnpm --prefix client vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.1",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "lucide-react": "^0.514.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sass-embedded": "^1.89.2",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}

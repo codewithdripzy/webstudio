@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                   // Modern JS
+    "module": "commonjs",                 // Node uses CommonJS
+    "lib": ["ES2020"],
+    "rootDir": "./",                // where your .ts files are
+    "outDir": "./",            // where compiled files go
+    "esModuleInterop": true,              // allows default imports from CJS
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                       // enables strict typing
+    "moduleResolution": "node",
+    "resolveJsonModule": true,            // if you import JSON
+    "skipLibCheck": true                  // skip type-checking node_modules
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "../dist"
+  ]
+}
