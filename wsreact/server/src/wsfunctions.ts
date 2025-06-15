@@ -118,7 +118,12 @@ function generateComponentCode(data: iDropType): string {
 
     switch (data.data.type) {
         case "flex":
-            return `<div style="display: flex; flex-direction: ${data.data.properties.direction || "row"}; justify-content: ${data.data.properties.justify || "flex-start"}; align-items: ${data.data.properties.align || "stretch"};">
+            return `<div style={{
+                display: "flex",
+                flexDirection: "${data.data.properties.direction || "row"}",
+                justifyContent: "${data.data.properties.justify || "flex-start"}",
+                alignItems: "${data.data.properties.align || "stretch"}"
+            }}>
             </div>`;
         case "text":
             return `<p>${data.data.properties.text}</p>`;
