@@ -1,14 +1,23 @@
 import cors from 'cors';
+import fs from 'fs';
 import path from 'path';
+import { Server } from 'http';
+import socket from "socket.io";
 import express from 'express';
 const app = express();
+const server = new Server(app);
+const io = new socket.Server(server, {
+    cors: {
+        origin: '*',
+    }
+});
 app.use(cors());
 app.use(express.json());
 // get the cwd of where the package was installed
 const projectPath = path.join('../', '../');
-// const packageJson = JSON.parse(fs.readFileSync(path.join(projectPath, 'package.json'), 'utf-8'));
-// console.log(`🚀 Starting server for ${packageJson.name} v${packageJson.version}...`);
-// console.log(`📦 Package name: ${packageJson.name}`);
+const packageJson = JSON.parse(fs.readFileSync(path.join(projectPath, 'package.json'), 'utf-8'));
+console.log(`🚀 Starting server for ${packageJson.name} v${packageJson.version}...`);
+console.log(`📦 Package name: ${packageJson.name}`);
 console.log(`📂 Project path: ${projectPath}`);
 console.log(`📂 Current working directory: ${process.cwd()}`);
 app.get('/ping', (req, res) => {

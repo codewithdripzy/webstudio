@@ -43,6 +43,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sass-embedded": "^1.89.2",
+    "socket.io": "^4.8.1",
     "vite-plugin-css-injected-by-js": "^3.5.2"
   },
   "devDependencies": {
