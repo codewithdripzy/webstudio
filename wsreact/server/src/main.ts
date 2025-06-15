@@ -2,13 +2,12 @@ import fs from 'fs';
 import cors from 'cors';
 import path from 'path';
 import { Server } from 'http';
-import socket from "socket.io"
+import { Server as SocketIOServer } from "socket.io";
 import express, { Request, Response } from 'express';
-
 
 const app = express();
 const server = new Server(app)
-const io = new socket.Server(server, {
+const io = new SocketIOServer(server, {
   cors: {
     origin: '*',
   }
@@ -18,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 // get the cwd of where the package was installed
-const projectPath = path.join('../', '../');
+const projectPath = path.join(process.cwd());
 const packageJson = JSON.parse(fs.readFileSync(path.join(projectPath, 'package.json'), 'utf-8'));
 
 console.log(`🚀 Starting server for ${packageJson.name} v${packageJson.version}...`);
