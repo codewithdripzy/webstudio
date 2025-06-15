@@ -5,7 +5,7 @@ import traverse from "@babel/traverse";
 import generate from "@babel/generator";
 import * as parser from "@babel/parser";
 
-import { iDropType, InjectOptions, WebstudioConfig } from "../types";
+import { iDropType, InjectOptions, WebstudioConfig } from "./wstypes";
 
 function isValidWebstudioConfig(config: WebstudioConfig): boolean {
     // Perform validation checks on the config object

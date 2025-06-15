@@ -4,8 +4,8 @@ import path from 'path';
 import { Server } from 'http';
 import { Server as SocketIOServer } from "socket.io";
 import express, { Request, Response } from 'express';
-import { generateComponentCode, injectJSXAtTarget, isValidWebstudioConfig } from './core/functions';
-import { iDropType, WebstudioConfig } from './types';
+import { generateComponentCode, injectJSXAtTarget, isValidWebstudioConfig } from './wsfunctions';
+import { iDropType, WebstudioConfig } from './wstypes';
 
 const app = express();
 const server = new Server(app);
