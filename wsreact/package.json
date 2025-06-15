@@ -5,14 +5,17 @@
   "types": "client/dist/index.d.ts",
   "private": false,
   "version": "0.0.1",
-  "type": "commonjs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./client/dist/webstudio.es.js",
+      "require": "./client/dist/webstudio.cjs.js",
+      "types": "./client/dist/index.d.ts"
+    }
+  },
   "description": "WebStudio React Client",
   "files": [
     "dist"
-  ],
-  "workspaces": [
-    "packages/*",
-    "apps/*"
   ],
   "bin": {
     "webstudio": "bin/start.js"
@@ -26,7 +29,8 @@
     "build": "pnpm run build:client && pnpm run build:server",
     "start:server": "node dist/server/main.js",
     "preview": "pnpm --prefix client vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "link": "npm link"
   },
   "dependencies": {
     "@types/cors": "^2.8.19",

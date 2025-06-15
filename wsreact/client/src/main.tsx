@@ -1,4 +1,4 @@
-import '../../server/main';
+// import '../../server/dist/main';
 import './styles/global.css';
 import App from './Webstudio'
 import { createRoot } from 'react-dom/client'

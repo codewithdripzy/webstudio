@@ -3,10 +3,9 @@
   "main": "dist/webstudio.cjs.js",
   "module": "dist/webstudio.es.js",
   "types": "dist/index.d.ts",
-   "style": "dist/globals.css",
   "private": false,
   "version": "0.0.1",
-  "type": "commonjs",
+  "type": "module",
   "files": [
     "dist"
   ],

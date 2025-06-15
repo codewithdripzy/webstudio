@@ -1,17 +1,16 @@
 {
   "name": "wreact-test",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "webstudio && vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "link:dev": "npm link /Users/user/Dev/Packages/webstudio/webstudio-react",
+    "link:dev": "npm link ../../wsreact",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@webstudio/react": "link:../../webstudio-react",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

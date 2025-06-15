@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                  // OK
+    "module": "ESNext",                  // ✅ <-- change this to ESM output
+    "lib": ["ES2020"],
+    "rootDir": "./src",                  // ✅ recommended: keep code in "src"
+    "outDir": "./dist",                  // ✅ separate build output
+    "moduleResolution": "node",          // "bundler" also works if using Vite
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
