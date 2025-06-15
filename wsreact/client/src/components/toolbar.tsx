@@ -6,6 +6,7 @@ import {
   Images,
   FrameIcon,
   Columns2,
+  BotIcon,
 } from "lucide-react"; // or your own icon source
 
 function ToolbarButton() {
@@ -93,15 +94,50 @@ function ToolbarButton() {
 
 function Toolbar({ show }: { show: boolean }) {
   const tools = [
-    { icon: <FrameIcon size={20} />, label: "Frame" },
-    { icon: <Columns2 size={20} />, label: "Container" },
-    { icon: <Type size={20} />, label: "Text" },
-    { icon: <TextCursorInput size={20} />, label: "Input" },
-    { icon: <Images size={20} />, label: "Images" },
+    { icon: <FrameIcon size={20} />, label: "Frame", data: {
+      type: "component",
+    } },
+    { icon: <Columns2 size={20} />, label: "Container", data: {
+      type: "flex-col",
+      properties: {
+        width: 0,
+        height: 0
+      }
+    } },
+    { icon: <Type size={20} />, label: "Text", data: {
+        type: "text",
+        properties: {
+          text: "New Text",
+          fontSize: 16,
+          color: "#000000",
+        },
+      }
+    },
+    { icon: <TextCursorInput size={20} />, label: "Input", data: {
+        type: "input",
+        properties: {
+          placeholder: "Enter text",
+          value: "",
+          width: 200,
+          height: 40,
+        },
+      }
+    },
+    { icon: <Images size={20} />, label: "Images", data: {
+        type: "image",
+        properties: {
+          src: "",
+          alt: "New Image",
+          width: 200,
+          height: 200,
+        },
+      }
+    }
   ];
 
-  const handleDragStart = (event: React.DragEvent<HTMLButtonElement>) => {
-    event.dataTransfer.setData("text/plain", "dragged-tool");
+  const handleDragStart = (event: React.DragEvent<HTMLButtonElement>, index: number) => {
+    event.dataTransfer.setData("application/json", JSON.stringify(tools[index].data));
+    event.dataTransfer.setDragImage(event.currentTarget, 0, 0); // Set a custom drag image
     event.dataTransfer.effectAllowed = "move";
   };
 
@@ -124,10 +160,17 @@ function Toolbar({ show }: { show: boolean }) {
       }}
     >
       {tools.map((tool, index) => (
-        <button key={index} className="toolbar-button" draggable={true} onDragStart={handleDragStart} title={tool.label}>
+        <button key={index} className="toolbar-button" draggable={true} onDragStart={(event) => {
+          handleDragStart(event, index)
+        }} title={tool.label}>
           {tool.icon}
         </button>
       ))}
+
+      {/* add AI tools */}
+      <button className="toolbar-button" onClick={() => {}} title="AI Tool">
+        <BotIcon size={20} />
+      </button>
     </div>
   );
 }

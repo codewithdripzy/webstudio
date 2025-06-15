@@ -1,0 +1,43 @@
+{
+  "collaboration": {
+    "enabled": true,
+    "url": "https://collab.webstudio.so",
+    "projectId": "wreact-test",
+    "branch": "main",
+    "accessToken": "your-access-token"
+  },
+  "root": "./src",
+  "outDir": "./dist",
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "styles": {
+    "css": [
+      "./src/styles/App.css"
+    ]
+  },
+  "routes": {
+    "/": {
+      "component": "./src/pages/index.tsx",
+      "exact": true
+    },
+    "/dashboard": {
+      "component": "./src/pages/dashboard.tsx"
+    },
+    "/about": {
+      "component": "./src/pages/about.tsx"
+    }
+  },
+  "components": {
+    "Webstudio": {
+      "path": "./src/components/Webstudio.tsx",
+      "props": {
+        "rootRef": "app"
+      }
+    }
+  },
+  "assets": {
+    "styles": [
+      "./src/styles/App.css"
+    ]
+  }
+}

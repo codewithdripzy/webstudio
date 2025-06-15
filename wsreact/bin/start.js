@@ -28,12 +28,18 @@ const server = spawn("node", [serverEntry], {
   shell: true,
 });
 
-server.unref(); // Detach from the parent process
+server.on("data", (data) => {
+  console.log(`[server stdout]: ${data}`);
+});
 
 server.on("error", (err) => {
   console.error("🚨 Server failed to start:", err);
   process.exit(1);
 });
+
+setTimeout(() => {
+  server.unref(); // Detach from the parent process
+}, 3000)
 
 server.on("close", (code) => {
   console.log(`Server exited with code ${code}`);
