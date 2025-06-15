@@ -98,10 +98,11 @@ function Toolbar({ show }: { show: boolean }) {
       type: "component",
     } },
     { icon: <Columns2 size={20} />, label: "Container", data: {
-      type: "flex-col",
+      type: "flex",
       properties: {
         width: 0,
-        height: 0
+        height: 0,
+        direction: "row", // or "column"
       }
     } },
     { icon: <Type size={20} />, label: "Text", data: {

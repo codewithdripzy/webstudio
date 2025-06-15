@@ -3,6 +3,9 @@ interface iDropType {
     data: {
         type: string,
         properties: {
+            direction: "row" | "column",
+            justify: "flex-start" | "flex-end" | "center" | "space-between" | "space-around",
+            align: "flex-start" | "flex-end" | "center" | "stretch" | "baseline",
             src?: string,
             alt?: string,
             placeholder?: string,

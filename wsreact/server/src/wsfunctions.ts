@@ -114,9 +114,14 @@ export function injectJSXAtTarget({
 }
 
 function generateComponentCode(data: iDropType): string {
+            // ${data.data.children.map(generateComponentCode).join("")}
+
     switch (data.data.type) {
+        case "flex":
+            return `<div style="display: flex; flex-direction: ${data.data.properties.direction || "row"}; justify-content: ${data.data.properties.justify || "flex-start"}; align-items: ${data.data.properties.align || "stretch"};">
+            </div>`;
         case "text":
-            return `<p>${data.data.properties.placeholder}</p>`;
+            return `<p>${data.data.properties.text}</p>`;
         case "image":
             return `<img src="${data.data.properties.src}" alt="${data.data.properties.alt || ""}" />`;
         case "button":

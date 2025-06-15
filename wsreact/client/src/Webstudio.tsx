@@ -38,7 +38,6 @@ function Webstudio({
         try {
           const route = window.location.pathname;
           const parsedData = JSON.parse(data);
-          console.log('Data dropped:', parsedData);
 
           sendDrop({
             conn,

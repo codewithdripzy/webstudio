@@ -6,6 +6,7 @@ function App() {
   const app = useRef<HTMLDivElement>(null);
   return <div className='app' id="ws-app" ref={app}>
     <Webstudio rootRef={app} />
-  </div>;
+  
+    <p>undefined</p></div>;
 }
 export default App;
