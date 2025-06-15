@@ -2,15 +2,28 @@ interface iDropType {
     route: string;
     data: {
         type: string,
-        properties: { 
-            placeholder: string,
+        properties: {
+            src?: string,
+            alt?: string,
+            placeholder?: string,
+            text?: string,
+            href?: string,
+            target?: string,
+            label?: string,
+            id?: string,
+            className?: string,
+            name?: string,
+            type?: string,
+            style?: Record<string, string>,
+            srcSet?: string,
+            sizes?: string,
             value: string,
             width: number,
             height: number
         }
     },
     coordinates: { x: number, y: number }
-    targetElement: string[];
+    targetElement: ElementSelector;
 }
 
 interface CollaborationConfig {
@@ -44,10 +57,16 @@ interface WebstudioConfig {
     };
 }
 
+interface ElementSelector {
+    tag: string;
+    id?: string;
+    classes?: string[];
+}
+
 interface InjectOptions {
     filePath: string;
     jsxCode: string;
-    targetType: string[];
+    targetType: ElementSelector;
 }
 
-export type { iDropType, CollaborationConfig, RouteConfig, ComponentConfig, WebstudioConfig, InjectOptions };
+export type { iDropType, CollaborationConfig, RouteConfig, ComponentConfig, WebstudioConfig, ElementSelector, InjectOptions };

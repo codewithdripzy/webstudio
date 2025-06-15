@@ -19,6 +19,8 @@ function Webstudio({
     const rootElement = rootRef.current;
     if (!rootElement) return;
 
+    rootElement.classList.add('webstudio-dropper');
+
     const handleDrop = (event: DragEvent) => {
       event.preventDefault();
 
@@ -28,7 +30,7 @@ function Webstudio({
 
       // get the target element the drop is happening on with  the parents element like "div>section>article"
       const targetElement = getElementPath(event);
-      console.log('Target element path:', targetElement.join(' > '));
+      // console.log('Target element path:', targetElement.join(' > '));
       
       // Get the data being dropped
       const data = event.dataTransfer?.getData('application/json');
@@ -51,33 +53,30 @@ function Webstudio({
       }
     };
 
-    rootElement.addEventListener('drop', handleDrop);
+    window.addEventListener('drop', handleDrop);
 
     rootElement.addEventListener('dragover', (event) => {
       event.preventDefault(); // Prevent default to allow drop
-
+      rootElement.classList.add('drag-over');
       // Show the wbstudio dropper
-      const dropper = rootElement.querySelector('.webstudio-dropper');
-      if (dropper) {
-        dropper.classList.add('drag-over');
-      }
+      // const dropper = rootElement.querySelector('.webstudio-dropper');
+      // if (dropper) {
+      //   dropper.classList.add('drag-over');
+      // }
     });
 
     rootElement.addEventListener('dragleave', (event) => {
       event.preventDefault(); // Prevent default to allow drop
       rootElement.classList.remove('drag-over');
-      const dropper = rootElement.querySelector('.webstudio-dropper');
-      if (dropper) {
-        dropper.classList.remove('drag-over');
-      }
+      // const dropper = rootElement.querySelector('.webstudio-dropper');
+      // if (dropper) {
+      //   dropper.classList.remove('drag-over');
+      // }
     });
 
     rootElement.addEventListener('dragend', (event) => {
       event.preventDefault(); // Prevent default to allow drop
-      const dropper = rootElement.querySelector('.webstudio-dropper');
-      if (dropper) {
-        dropper.classList.remove('drag-over');
-      }
+      rootElement.classList.remove('drag-over');
     });
 
     return () => {
@@ -87,7 +86,7 @@ function Webstudio({
   }, [rootRef]);
 
   return <div ref={rootRef}>
-    <div className="webstudio-dropper"></div>
+    {/* <div className="webstudio-dropper"></div> */}
     <ToolbarButton />
   </div>
 }

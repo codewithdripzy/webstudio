@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2020",                  // OK
+    "target": "es6",                  // OK
     "module": "ESNext",                  // ✅ <-- change this to ESM output
     "lib": ["ES2020"],
     "rootDir": "./src",                  // ✅ recommended: keep code in "src"
@@ -11,7 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

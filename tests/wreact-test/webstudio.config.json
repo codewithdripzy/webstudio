@@ -17,14 +17,8 @@
   },
   "routes": {
     "/": {
-      "component": "./src/pages/index.tsx",
+      "component": "./src/App.tsx",
       "exact": true
-    },
-    "/dashboard": {
-      "component": "./src/pages/dashboard.tsx"
-    },
-    "/about": {
-      "component": "./src/pages/about.tsx"
     }
   },
   "components": {

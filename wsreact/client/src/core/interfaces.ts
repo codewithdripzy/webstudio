@@ -6,7 +6,13 @@ interface iDropData {
     conn: Socket<DefaultEventsMap, DefaultEventsMap>;
     data: object;
     coordinates: { x: number; y: number; };
-    targetElement: string[];
+    targetElement: ElementSelector;
 }
 
-export type { iDropData };
+interface ElementSelector {
+  tag: string;
+  id?: string;
+  classes?: string[];
+}
+
+export type { iDropData, ElementSelector };
